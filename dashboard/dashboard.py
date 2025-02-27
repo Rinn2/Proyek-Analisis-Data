@@ -33,7 +33,7 @@ season_filter = st.sidebar.selectbox(
 # Filter dataset
 filtered_df = df.copy()
 if season_filter != "Tampilkan Semua":
-    filtered_df = filtered_df[filtered_df['season'] == season_filter]
+    filtered_df = filtered_df[filtered_df['season_x'] == season_filter]
 
 # Menampilkan beberapa baris pertama dataset yang telah difilter
 st.subheader("📌 Data Peminjaman Sepeda")
@@ -81,7 +81,7 @@ st.pyplot(fig)
 st.subheader("📊 Perbandingan Penyewa Sepeda: Hari Kerja vs Hari Libur")
 
 # Menghitung rata-rata jumlah peminjaman sepeda berdasarkan hari kerja/libur
-avg_rentals = df.groupby("workingday_x")["cnt_x"].mean().reset_index()
+avg_rentals = filtered_df.groupby("workingday_x")["cnt_x"].mean().reset_index()
 
 # Membuat plot lebih menarik
 fig, ax = plt.subplots(figsize=(7, 5))
