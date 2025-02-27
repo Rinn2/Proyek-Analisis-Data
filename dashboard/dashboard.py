@@ -10,8 +10,8 @@ sns.set_style("whitegrid")
 
 # --- Tampilan Sidebar ---
 st.sidebar.title("Agus Irvan Maulana")
-st.sidebar.write("agusirvan2708@gmail.com.")
-st.sidebar.write("MC381D5Y1073.")
+st.sidebar.write("agusirvan2708@gmail.com")
+st.sidebar.write("MC381D5Y1073")
 
 # --- Judul Aplikasi ---
 st.title("🚴 Analisis Peminjaman Sepeda")
@@ -20,46 +20,70 @@ st.markdown("---")
 # --- Memuat Dataset ---
 df = pd.read_csv("dashboard/main-data.csv")
 
-# --- Filter berdasarkan Musim ---
+# --- Filtering Data ---
 st.sidebar.subheader("Filter Data")
-season_mapping = {1: "Musim Semi", 2: "Musim Panas", 3: "Musim Gugur", 4: "Musim Dingin"}
-selected_season = st.sidebar.selectbox("Pilih Musim", list(season_mapping.values()))
 
-# Mapping pilihan musim ke angka yang sesuai
-df_filtered = df[df['season'] == list(season_mapping.keys())[list(season_mapping.values()).index(selected_season)]]
+# Dropdown filter untuk Season
+season_filter = st.sidebar.selectbox(
+    "Pilih Season:",
+    ["Tampilkan Semua", 1, 2, 3, 4],
+    format_func=lambda x: "Tampilkan Semua" if x == "Tampilkan Semua" else {1: "Spring", 2: "Summer", 3: "Fall", 4: "Winter"}[x]
+)
 
-# Menampilkan beberapa baris pertama dataset
-st.subheader("📌 Data Peminjaman Sepeda ({}).".format(selected_season))
-st.dataframe(df_filtered.head())
+# Filter dataset
+filtered_df = df.copy()
+if season_filter != "Tampilkan Semua":
+    filtered_df = filtered_df[filtered_df['season'] == season_filter]
+
+# Menampilkan beberapa baris pertama dataset yang telah difilter
+st.subheader("📌 Data Peminjaman Sepeda")
+st.dataframe(filtered_df.head())
 
 # --- Analisis Tren Bulanan ---
-st.subheader("📊 Tren Peminjaman Sepeda per Bulan ({})".format(selected_season))
+st.subheader(f"📊 Tren Peminjaman Sepeda per Bulan {'(Musim ' + {1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'}.get(season_filter, '') + ')' if season_filter != 'Tampilkan Semua' else ''}")
 
 # Mengelompokkan data berdasarkan bulan
-monthly_trend = df_filtered.groupby('mnth')['cnt'].sum().reset_index()
+monthly_trend = filtered_df.groupby('mnth')['cnt'].sum().reset_index()
 monthly_trend['change'] = monthly_trend['cnt'].diff()
-month_with_biggest_drop = monthly_trend.loc[monthly_trend['change'].idxmin(), 'mnth']
+
+# Hapus baris dengan nilai NaN di kolom 'change'
+monthly_trend = monthly_trend.dropna(subset=['change'])
+
+# Cek apakah ada data yang tersisa setelah menghapus NaN
+if not monthly_trend.empty:
+    month_with_biggest_drop = monthly_trend.loc[monthly_trend['change'].idxmin(), 'mnth']
+else:
+    month_with_biggest_drop = "Tidak ada data yang tersedia"
 
 # Membuat plot tren peminjaman
 fig, ax = plt.subplots(figsize=(10, 5))
 sns.lineplot(data=monthly_trend, x='mnth', y='cnt', marker='o', linewidth=2.5, label='Total Peminjaman', ax=ax, color='royalblue')
-ax.axvline(x=month_with_biggest_drop, color='red', linestyle='--', label=f'Penurunan Terbesar (Bulan {month_with_biggest_drop})')
+
+# Tambahkan garis vertikal hanya jika ada data yang tersedia
+if not monthly_trend.empty:
+    ax.axvline(
+        x=month_with_biggest_drop,
+        color='red',
+        linestyle='--',
+        label=f'Penurunan Terbesar (Bulan {month_with_biggest_drop})'
+    )
+
 ax.set_xticks(range(1, 13))
 ax.set_xticklabels(['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'])
 ax.set_xlabel('Bulan')
 ax.set_ylabel('Total Peminjaman')
-ax.set_title(f'📉 Tren Peminjaman Sepeda per Bulan ({selected_season})', fontsize=14)
+ax.set_title('📉 Tren Peminjaman Sepeda per Bulan', fontsize=14)
 ax.legend()
 ax.grid(alpha=0.3)
 st.pyplot(fig)
 
 # --- Analisis Feature Importance ---
-st.subheader("🔍 Faktor yang Mempengaruhi Peminjaman ({})".format(selected_season))
+st.subheader("🔍 Faktor yang Mempengaruhi Peminjaman")
 
 # Memilih fitur yang relevan
 features = ['weathersit', 'temp', 'hum', 'windspeed', 'holiday', 'workingday']
-X = df_filtered[features]
-y = df_filtered['cnt']
+X = filtered_df[features]
+y = filtered_df['cnt']
 
 # Melatih model RandomForestRegressor
 model = RandomForestRegressor(n_estimators=100, random_state=42)
@@ -77,15 +101,15 @@ for index, value in enumerate(importance_df['Importance']):
     ax.text(value - 0.02, index, f'{value:.3f}', va='center', fontsize=10, fontweight='bold')
 ax.set_xlabel('Tingkat Pengaruh')
 ax.set_ylabel('Faktor')
-ax.set_title(f'📊 Feature Importance - Faktor yang Mempengaruhi Peminjaman ({selected_season})')
+ax.set_title('📊 Feature Importance - Faktor yang Mempengaruhi Peminjaman')
 ax.grid(axis='x', linestyle='--', alpha=0.5)
 st.pyplot(fig)
 
 # --- Kesimpulan ---
 st.markdown("---")
-st.subheader("📌 Kesimpulan ({})".format(selected_season))
+st.subheader("📌 Kesimpulan")
 st.info(
-    "- Bulan dengan penurunan peminjaman terbesar: **Bulan {}**.\n"
+    "- Bulan dengan penurunan peminjaman terbesar: **{}**.\n"
     "- Faktor paling berpengaruh terhadap jumlah peminjaman: **{}**."
     .format(month_with_biggest_drop, importance_df.iloc[0, 0])
 )
