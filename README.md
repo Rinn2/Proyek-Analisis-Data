@@ -5,14 +5,31 @@ Aplikasi ini dibuat menggunakan **Streamlit** untuk menganalisis data peminjaman
 
 ## 📂 Dataset
 Dataset yang digunakan berisi informasi mengenai peminjaman sepeda dengan kolom seperti:
-- `mnth`: Bulan peminjaman
-- `cnt`: Jumlah total peminjaman
-- `weathersit`: Kondisi cuaca
-- `temp`: Suhu
-- `hum`: Kelembaban udara
-- `windspeed`: Kecepatan angin
-- `holiday`: Apakah hari tersebut hari libur
-- `workingday`: Apakah hari tersebut hari kerja
+🕒 Waktu & Indeks
+instant: Indeks record
+dteday: Tanggal peminjaman
+season: Musim (1: Spring, 2: Summer, 3: Fall, 4: Winter)
+yr: Tahun (0: 2011, 1: 2012)
+mnth: Bulan (1 hingga 12)
+hr: Jam dalam format 24 jam (0 hingga 23)
+🚴‍♂️ Hari Kerja & Hari Libur
+holiday: Apakah hari tersebut libur (1: Ya, 0: Tidak)
+weekday: Hari dalam seminggu (0: Minggu, 1: Senin, ..., 6: Sabtu)
+workingday: Apakah hari tersebut merupakan hari kerja (1: Ya, 0: Tidak)
+🌦 Kondisi Cuaca
+weathersit:
+1: Cerah, Sedikit Berawan, Berawan Parsial
+2: Kabut + Berawan, Kabut + Mendung, Kabut + Sedikit Berawan
+3: Hujan Ringan, Salju Ringan, Petir + Awan Tersebar
+4: Hujan Lebat + Badai Petir, Salju + Kabut
+temp: Suhu normalisasi dalam Celsius (dibagi 41 sebagai nilai maksimum)
+atemp: Suhu terasa dalam Celsius (dibagi 50 sebagai nilai maksimum)
+hum: Kelembaban normalisasi (dibagi 100 sebagai nilai maksimum)
+windspeed: Kecepatan angin normalisasi (dibagi 67 sebagai nilai maksimum)
+📈 Data Peminjaman Sepeda
+casual: Jumlah pengguna sepeda non-terdaftar
+registered: Jumlah pengguna sepeda terdaftar
+cnt: Jumlah total peminjaman sepeda (casual + registered)
 
 ## ⚙️ Instalasi dan Menjalankan Aplikasi
 1. **Clone repository ini**:
