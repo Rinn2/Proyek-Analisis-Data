@@ -42,8 +42,8 @@ Bagian ini bisa dimasukkan ke README untuk memperjelas dataset yang digunakan da
 ## ⚙️ Instalasi dan Menjalankan Aplikasi
 1. **Clone repository ini**:
    ```bash
-  https://github.com/Rinn2/Proyek-Analisis-Data.git
-  cd repository-name
+   git clone https://github.com/Rinn2/Proyek-Analisis-Data.git
+   cd Proyek-Analisis-Data
    ```
 
 2. **Buat virtual environment (opsional tetapi direkomendasikan)**:
