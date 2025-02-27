@@ -78,7 +78,6 @@ st.pyplot(fig)
 st.markdown("---")
 st.subheader("📌 Kesimpulan")
 st.info(
-    "\n- Tren peminjaman sepeda cenderung fluktuatif sepanjang tahun.\n"
     "- Bulan dengan penurunan peminjaman terbesar: **Bulan {}**.\n"
     "- Faktor paling berpengaruh terhadap jumlah peminjaman: **{}**."
     .format(month_with_biggest_drop, importance_df.iloc[0, 0])
