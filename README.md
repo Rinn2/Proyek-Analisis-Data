@@ -1,97 +1,32 @@
-# 🚴 Analisis Peminjaman Sepeda dengan Streamlit
+Ringkasan Notebook
+Identitas
+Nama: Agus Irvan Maulana
 
-## 📌 Deskripsi Proyek
-Aplikasi ini dibuat menggunakan **Streamlit** untuk menganalisis data peminjaman sepeda berdasarkan berbagai faktor seperti cuaca, suhu, kecepatan angin, dan hari kerja/libur. Dengan bantuan **Random Forest Regressor**, aplikasi ini juga menentukan faktor paling berpengaruh terhadap jumlah peminjaman sepeda.
+Cohort ID: MC381D5Y1073
 
-## 📂 Dataset
-Dataset ini berisi informasi peminjaman sepeda berdasarkan berbagai faktor cuaca, waktu, dan kondisi lingkungan. Berikut adalah deskripsi masing-masing kolom:
+Kelas: MC-48
 
-### 🕒 Waktu & Indeks  
-- `instant`: Indeks record  
-- `dteday`: Tanggal peminjaman  
-- `season`: Musim (1: Spring, 2: Summer, 3: Fall, 4: Winter)  
-- `yr`: Tahun (0: 2011, 1: 2012)  
-- `mnth`: Bulan (1 hingga 12)  
-- `hr`: Jam dalam format 24 jam (0 hingga 23)  
+ 1. Import Library
+Notebook ini memuat library penting untuk:
 
-### 🚴‍♂️ Hari Kerja & Hari Libur  
-- `holiday`: Apakah hari tersebut libur (1: Ya, 0: Tidak)  
-- `weekday`: Hari dalam seminggu (0: Minggu, 1: Senin, ..., 6: Sabtu)  
-- `workingday`: Apakah hari tersebut merupakan hari kerja (1: Ya, 0: Tidak)  
+Visualisasi data: matplotlib, seaborn
 
-### 🌦 Kondisi Cuaca  
-- `weathersit`:  
-  - **1**: Cerah, Sedikit Berawan, Berawan Parsial  
-  - **2**: Kabut + Berawan, Kabut + Mendung, Kabut + Sedikit Berawan  
-  - **3**: Hujan Ringan, Salju Ringan, Petir + Awan Tersebar  
-  - **4**: Hujan Lebat + Badai Petir, Salju + Kabut  
-- `temp`: Suhu normalisasi dalam Celsius (dibagi 41 sebagai nilai maksimum)  
-- `atemp`: Suhu terasa dalam Celsius (dibagi 50 sebagai nilai maksimum)  
-- `hum`: Kelembaban normalisasi (dibagi 100 sebagai nilai maksimum)  
-- `windspeed`: Kecepatan angin normalisasi (dibagi 67 sebagai nilai maksimum)  
+Manipulasi data: pandas, os, glob
 
-### 📈 Data Peminjaman Sepeda  
-- `casual`: Jumlah pengguna sepeda non-terdaftar  
-- `registered`: Jumlah pengguna sepeda terdaftar  
-- `cnt`: Jumlah total peminjaman sepeda (`casual` + `registered`)  
+Deep Learning: tensorflow.keras
 
----
+ 2. Persiapan Data Gambar
+Menggunakan dataset gambar dengan struktur folder: seg_train, seg_test, seg_pred.
 
-Bagian ini bisa dimasukkan ke README untuk memperjelas dataset yang digunakan dalam proyek. Jika ada tambahan lain yang ingin dimasukkan, beri tahu saya! 🚀
+Menghitung jumlah gambar di setiap folder.
 
-## ⚙️ Instalasi dan Menjalankan Aplikasi
-1. **Clone repository ini**:
-   ```bash
-   git clone https://github.com/Rinn2/Proyek-Analisis-Data.git
-   cd Proyek-Analisis-Data
-   ```
+Menampilkan beberapa sampel gambar dari tiap kelas.
 
-2. **Buat virtual environment (opsional tetapi direkomendasikan)**:
-   ```bash
-   python -m venv env
-   source env/bin/activate  # Untuk macOS/Linux
-   env\Scripts\activate  # Untuk Windows
-   ```
+Menghitung distribusi kelas (jumlah gambar per kelas).
 
-3. **Install dependensi**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Jalankan aplikasi Streamlit**:
-   ```bash
-   streamlit run dashboard.py
-   ```
-
-## 📊 Fitur Utama
-✅ **Visualisasi Tren Peminjaman Sepeda**
-   - Grafik tren peminjaman sepeda per bulan
-   - Identifikasi bulan dengan penurunan peminjaman terbesar
-
-✅ **Analisis Faktor Peminjaman Sepeda**
-   - Model **Random Forest Regressor** untuk menentukan faktor paling berpengaruh
-   - Visualisasi **Feature Importance**
-
-## 📌 Hasil Analisis
-Dari hasil analisis, faktor yang paling berpengaruh terhadap peminjaman sepeda adalah:
-1. **Kecepatan Angin (windspeed)**
-2. **Suhu Udara (temp)**
-3. **Kelembaban (hum)**
-
-Bulan dengan penurunan peminjaman terbesar juga diidentifikasi melalui grafik tren peminjaman.
-
-## 🛠 Teknologi yang Digunakan
-- **Python**
-- **Streamlit**
-- **Pandas**
-- **Matplotlib & Seaborn**
-- **Scikit-learn**
-
-## 💡 Pengembangan Selanjutnya
-- Menambahkan fitur **prediksi peminjaman sepeda** berdasarkan cuaca
-- Menganalisis **pola peminjaman sepeda pada hari kerja vs hari libur**
-
-📩 **Kontribusi**: Jika tertarik untuk berkontribusi, silakan lakukan pull request atau hubungi saya!
-
-🚀 **Selamat mencoba!**
-
+ 3. Split Data
+Data dibagi menjadi 3 bagian:
+Train: seg_train
+Validation: seg_pred
+Test: seg_test
+Menggunakan ImageDataGenerator untuk preprocessing dan augmentasi gambar
