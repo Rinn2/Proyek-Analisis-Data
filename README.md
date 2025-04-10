@@ -17,12 +17,8 @@ Deep Learning: tensorflow.keras
 
  2. Persiapan Data Gambar
    -Menggunakan dataset gambar dengan struktur folder: seg_train, seg_test, seg_pred.
-
-   - Menghitung jumlah gambar di setiap folder.
-
+   -Menghitung jumlah gambar di setiap folder.
    -Menampilkan beberapa sampel gambar dari tiap kelas.
-
-   -Menghitung distribusi kelas (jumlah gambar per kelas).
 
  3. Split Data
  Data dibagi menjadi 3 bagian:
