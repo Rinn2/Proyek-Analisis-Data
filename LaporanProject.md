@@ -67,6 +67,6 @@ Metrik evaluasi yang digunakan:
 - Precision
 
 Hasil Evaluasi :
-1. Logistic Regression :91%
+1. Logistic Regression :95%
 2. Random Forest Classifier : 97%
 3. Neural Network : 96%
