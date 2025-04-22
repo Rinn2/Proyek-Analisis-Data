@@ -170,19 +170,19 @@ Hasil Metrik Evaluasi :
 Evaluasi Dengan Data Baru
 1. Logistic Regression
 
-![image](https://github.com/user-attachments/assets/fb1bb9bb-357b-4fcf-8731-ce7bb334c0c2)
+![image](https://github.com/user-attachments/assets/06bddf78-6b40-4f0e-8da8-d36eac600369)
 
 Berdasarkan evaluasi dengan data baru pada menggunakan Logistic Regression menghasilkan Output diabetes pada 2 data barunya
 
 2. Random Forest
 
-![image](https://github.com/user-attachments/assets/b15e254e-be62-4c97-8065-3af9a1688d17)
+![image](https://github.com/user-attachments/assets/93022878-f685-4d3f-b883-880578a4c367)
 
 Berdasarkan evaluasi dengan data baru pada menggunakan Random  Forest menghasilkan Output diabetes pada 2 data barunya
 
 3. Neural Network
    
-![image](https://github.com/user-attachments/assets/4258fe90-93cb-4d83-81cf-951d1f4a3449)
+![image](https://github.com/user-attachments/assets/0b06feaa-8dd9-476c-b434-ccb0efc74c20)
 
 Berdasarkan evaluasi dengan data baru pada menggunakan Neural Network   menghasilkan Output diabetes pada 2 data barunya
 
