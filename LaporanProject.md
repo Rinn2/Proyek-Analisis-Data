@@ -57,8 +57,8 @@ Kondisi dataset tidak  ada missing value pada seluruh kolom dalam dataset. Selai
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 - Menghapus duplikat data yang ada didalam dataset
-- Melakukan encoding terhadap variabel kategorikal menggunakan LabelEncoder dan OneHotEncoder.
-- Menormalkan nilai numerik  untuk fitur yang skewed seperti blood_glucose_level dan bmi.
+- Melakukan encoding terhadap variabel kategorikal (gender, location, dan smoking_history) menggunakan LabelEncoder
+- Menormalkan nilai numerik  untuk fitur yang menggunakan minmaxScaler.
 - Membagi data menjadi data latih dan data uji (train-test split).
 
 ## Modeling
@@ -139,6 +139,7 @@ Dalam proses evaluasi model, tiga metrik utama yang digunakan adalah
 - Accuracy (Akurasi) mengukur proporsi prediksi yang benar dibandingkan dengan keseluruhan jumlah data. Metrik ini berguna ketika distribusi kelas seimbang.
 Rumus
 ![image](https://github.com/user-attachments/assets/5ef19c84-9572-49e2-8cd0-ca75c87f8043)
+
 Penjelasan :
 TP = True Positive
 TN = True Negative
@@ -165,16 +166,22 @@ Hasil Metrik Evaluasi :
 3. Neural Network : 96% memiliki akurasi yang sedikit lebih rendah dari Random Forest, namun tetap menunjukkan performa yang baik
 
 Evaluasi Dengan Data Baru
-1.Logistic Regression
+1. Logistic Regression
+
 ![image](https://github.com/user-attachments/assets/fb1bb9bb-357b-4fcf-8731-ce7bb334c0c2)
+
 Berdasarkan evaluasi dengan data baru pada menggunakan Logistic Regression menghasilkan Output diabetes pada 2 data barunya
 
-2.Random Forest 
+2. Random Forest
+
 ![image](https://github.com/user-attachments/assets/b15e254e-be62-4c97-8065-3af9a1688d17)
+
 Berdasarkan evaluasi dengan data baru pada menggunakan Random  Forest menghasilkan Output diabetes pada 2 data barunya
 
-3.Neural Network
+3. Neural Network
+   
 ![image](https://github.com/user-attachments/assets/4258fe90-93cb-4d83-81cf-951d1f4a3449)
+
 Berdasarkan evaluasi dengan data baru pada menggunakan Neural Network   menghasilkan Output diabetes pada 2 data barunya
 
 # Kesimpulan 
