@@ -153,10 +153,12 @@ Rumus
 
 - Recall (Sensitivitas)  mengukur seberapa banyak dari total data positif yang berhasil dikenali oleh model. Metrik ini berguna ketika sangat penting untuk menangkap sebanyak mungkin data positif
 Rumus
+
 ![image](https://github.com/user-attachments/assets/5ea139a1-7898-4c94-a3c0-d53c0ebdf82e)
 
 - F1-Score merupakan harmonisasi antara precision dan recall. Metrik ini sangat berguna ketika kita menginginkan keseimbangan antara precision dan recall.
 Rumus
+
 ![image](https://github.com/user-attachments/assets/837a601d-6180-4592-9e7c-fe00f413f3e2)
 
 
