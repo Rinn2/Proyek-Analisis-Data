@@ -163,7 +163,7 @@ Rumus
 
 
 Hasil Metrik Evaluasi :
-1. Logistic Regression :95% masih mampu memberikan hasil yang sangat kompetitif dengan akurasi 95%. 
+1. Logistic Regression :96% masih mampu memberikan hasil yang sangat kompetitif dengan akurasi 95%. 
 2. Random Forest  : 97%  menunjukkan performa terbaik di antara ketiga model dengan akurasi tertinggi (97%) serta precision dan recall yang tinggi.
 3. Neural Network : 96% memiliki akurasi yang sedikit lebih rendah dari Random Forest, namun tetap menunjukkan performa yang baik
 
