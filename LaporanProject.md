@@ -166,8 +166,12 @@ Hasil Metrik Evaluasi :
 1. Logistic Regression :96% masih mampu memberikan hasil yang sangat kompetitif dengan akurasi 95%. 
 2. Random Forest  : 97%  menunjukkan performa terbaik di antara ketiga model dengan akurasi tertinggi (97%) serta precision dan recall yang tinggi.
 3. Neural Network : 96% memiliki akurasi yang sedikit lebih rendah dari Random Forest, namun tetap menunjukkan performa yang baik
+## Apakah solusi yang dikembangkan sudah menjawab setiap problem statement, berhasil mencapai seluruh goals yang diharapkan, dan memberikan dampak sesuai dengan solusi yang direncanakan? Jelaskan!
+Masalah ini berhasil diatasi dengan membangun beberapa model klasifikasi, yaitu Logistic Regression, Random Forest, dan Neural Network, yang dirancang untuk memprediksi status diabetes pasien berdasarkan fitur medis seperti usia, kadar glukosa, tekanan darah, dan BMI.
 
+Hasil evaluasi menunjukkan bahwa ketiga model mampu melakukan klasifikasi dengan akurasi di atas 95%, yang mengindikasikan bahwa sistem ini memiliki potensi tinggi untuk digunakan sebagai alat bantu skrining awal di layanan kesehatan. Dengan akurasi berkisar antara 95% hingga 97%, ketiga model dapat diandalkan untuk memprediksi status diabetes secara efektif.
 Evaluasi Dengan Data Baru
+
 1. Logistic Regression
 
 ![image](https://github.com/user-attachments/assets/06bddf78-6b40-4f0e-8da8-d36eac600369)
