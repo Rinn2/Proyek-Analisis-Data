@@ -85,6 +85,10 @@ Fungsi Logistik (Sigmoid): Logistic regression menggunakan fungsi logistik (sigm
 - Model ini mudah dipengaruhi oleh outlier
   
 2. Random Forest adalah algoritma ensemble learning yang membangun banyak pohon keputusan (decision trees) dan menggabungkan hasilnya untuk membuat prediksi yang lebih akurat dan stabil.
+### Deskripsi Model Random Forest
+- n_estimators=100 artinya model menggunakan 100 pohon keputusan (decision trees).
+- random_state=42 memastikan hasil yang konsisten setiap kali dijalankan.
+
 ### Cara Kerja 
 - Bootstrap Aggregating (Bagging)  menggunakan teknik bagging yang melibatkan pengambilan sampel data secara acak dengan pengulangan (bootstrap) untuk melatih setiap pohon keputusan
 - Pembangunan Pohon Keputusan artnya setiap pohon keputusan di Random Forest dibangun dengan memilih subset acak dari fitur pada setiap pembelahan (split), yang membedakan Random Forest dari pohon keputusan biasa yang mempertimbangkan semua fitu
@@ -108,6 +112,13 @@ Fungsi Logistik (Sigmoid): Logistic regression menggunakan fungsi logistik (sigm
 - Random Forest dapat menghasilkan model yang sangat besar dan sulit untuk diinterpretasikan karena banyaknya pohon yang terlibat
   
 3. Neural Network  (Jaringan Saraf Tiruan) adalah model pembelajaran mesin yang terinspirasi oleh cara kerja otak manusia. Model ini terdiri dari beberapa lapisan (layers) yang saling terhubung, di mana setiap lapisan terdiri dari neuron-neuron yang menghitung hasil berdasarkan input yang diberikan
+### Deskripsi Model Neural Network
+- Dense(128, activation='relu') Lapisan input dan hidden pertama dengan 128 neuron dan aktivasi ReLU (Rectified Linear Unit)input_shape=(x_train.shape[1],) menyesuaikan jumlah fitur dari data training.
+- Dropout(0.3) berfungsi untuk Mengurangi overfitting dengan “mengabaikan” 30% neuron secara acak saat pelatihan
+- Dense(64, activation='relu') Lapisan hidden kedua dengan 64 neuron dan aktivasi ReLU.
+- Dropout(0.2) berfungsi untuk Dropout sebesar 20% untuk regularisasi tambahan
+- Dense(output_units, activation='sigmoid')Lapisan output dengan fungsi aktivasi sigmoid untuk klasifikasi biner atau multi-label.
+  
 ### Cara Kerja 
 - Input Layer yaitu lapisan pertama yang menerima data. Setiap node di lapisan ini mewakili fitur input.
 - Hidden Layers yaitu lapisan tersembunyi yang terdiri dari neuron-neuron yang menghitung hasil berdasarkan input yang diterima dari lapisan sebelumnya. Hasil perhitungan dihasilkan melalui fungsi aktivasi seperti ReLU atau sigmoid
@@ -167,16 +178,8 @@ Hasil Metrik Evaluasi :
 
 
 2. Random Forest  : 97%  menunjukkan performa terbaik di antara ketiga model dengan akurasi tertinggi (97%) serta precision dan recall yang tinggi.
-### Deskripsi Model Random Forest
-- n_estimators=100 artinya model menggunakan 100 pohon keputusan (decision trees).
-- random_state=42 memastikan hasil yang konsisten setiap kali dijalankan.
+
 3. Neural Network : 96% memiliki akurasi yang sedikit lebih rendah dari Random Forest, namun tetap menunjukkan performa yang baik
-### Deskripsi Model Neural Network
-- Dense(128, activation='relu') Lapisan input dan hidden pertama dengan 128 neuron dan aktivasi ReLU (Rectified Linear Unit)input_shape=(x_train.shape[1],) menyesuaikan jumlah fitur dari data training.
-- Dropout(0.3) berfungsi untuk Mengurangi overfitting dengan “mengabaikan” 30% neuron secara acak saat pelatihan
-- Dense(64, activation='relu') Lapisan hidden kedua dengan 64 neuron dan aktivasi ReLU.
-- Dropout(0.2) berfungsi untuk Dropout sebesar 20% untuk regularisasi tambahan
-- Dense(output_units, activation='sigmoid')Lapisan output dengan fungsi aktivasi sigmoid untuk klasifikasi biner atau multi-label.
 
 ## Apakah solusi yang dikembangkan sudah menjawab setiap problem statement, berhasil mencapai seluruh goals yang diharapkan, dan memberikan dampak sesuai dengan solusi yang direncanakan? Jelaskan!
 Masalah ini berhasil diatasi dengan membangun beberapa model klasifikasi, yaitu Logistic Regression, Random Forest, dan Neural Network, yang dirancang untuk memprediksi status diabetes pasien berdasarkan fitur medis seperti usia, kadar glukosa, tekanan darah, dan BMI.
